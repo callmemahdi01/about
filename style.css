@@ -1,68 +1,64 @@
 html {
-    display: flex;
-    flex-direction: column;
-    align-items: stretch;
-    font-size: 100%;
-    user-select: none;
-}
-
-body {
-    font-family: vazirmatn, Arial, sans-serif;
+    font-family: Vazirmatn;
     background-color: #222;
-    color: #fff; /* تغییر رنگ متن به سفید */
-    margin: 0;
-    padding: 20px;
-}
-
-header {
+    color: #ddd;
     text-align: center;
 }
+
+h1{
+    text-align: center;
+    background-color: #333;
+    width: 91%;
+    margin: 0 auto;
+    box-shadow: inset 0 0 10px 1px rgba(255, 255, 255, 0.185);
+    border-radius: 10px;
+    margin-bottom: 1rem;
+    padding: 10px;
+}
+
 .container {
-    max-width: 100%;
-    margin: auto;
-    background: #333;
-    border-radius: 8px;
-    box-shadow: inset 0px 0px 10px 1px rgba(255, 255, 255, 0.1);
-    padding: 20px;
-}
-
-p {
-    direction: rtl;
-    text-align: center;
+    width: 90%;
+    background-color: #333;
+    margin: 0 auto;
+    box-shadow: inset 0 0 10px 1px rgba(255, 255, 255, 0.185);
+    border-radius: 10px; 
+    padding: 10px;
+    margin-bottom: 1rem;
 }
 
 h2 {
-    text-align: center;
-    color: #FFEB3B; /* زرد */
+    color: #FFEB3B;
 }
 
 h4 {
-    text-align: center;
-    color: #F44336; /* قرمز */
-}
-
-h6 {
-    text-align: center;
-}
-
-.skills {
-    margin-top: 20px;
+    color: #F44336;
 }
 
 .skill-category {
     margin: 1rem 0;
-    padding: 10px;
-    border: 1px solid #e0e0e0;
+    padding: 3px;
+    border: 2px solid #e0e0e014;
     border-radius: 5px;
-    display: flex;
-    flex-direction: column;
 }
 
 .skill-category h3 {
+    text-align: left;
+    padding-left: 10px;
     background-color: #383838;
     margin: 0;
     color: #FFEB3B;
+    border-radius: 4px;
+}
+
+footer {
+    background-color: #333;
+    box-shadow: inset 0 0 10px 1px rgba(255, 255, 255, 0.185);
+    display: flex;
+    justify-content: space-around;
     border-radius: 10px;
+    width: 90%;
+    margin: 10px auto;
+    padding: 10px;
 }
 
 ul {
@@ -85,8 +81,7 @@ li:not(.loading) {
 
 li:hover:not(.loading) {
     box-shadow: 0 0 10px rgb(204, 204, 204);
-    margin: -5px 1.5rem;
-    font-size: 110%;
+    font-size: 120%;
     background-color: #ffeb34;
 }
 
@@ -107,38 +102,15 @@ li:hover:not(.loading) {
     font-size: 110%;
     background-color: #aba156;
 }
-header {
-    display: flex;
-    max-width: 100%;
-    margin: 1rem auto;
-    background: #333;
-    border-radius: 8px;
-    box-shadow: inset 0px 0px 10px 1px rgba(255, 255, 255, 0.1);
-    padding: 0 10px;
-    justify-content: center;
-}
-
-
-footer {
-    display: flex;
-    max-width: 100%;
-    margin: 1rem auto;
-    background: #333;
-    border-radius: 8px;
-    box-shadow: inset 0px 0px 10px 1px #ffffff1a;
-    padding: 10px 10px;
-    justify-content: space-around;
-    flex-direction: row-reverse;
-}
 
 footer a {
     color: #0095ff;
     text-decoration: none;
     padding: 0 10px;
     border-radius: 10px;
-    box-shadow: inset 0 0 10px rgb(108, 108, 108);
+    box-shadow: inset 0 0 10px rgba(108, 108, 108, 0.405);
     font-weight: 500;
-    transition: 200ms ease-in-out;
+    transition: 200ms;
 }
 
 footer a:hover {
@@ -147,24 +119,30 @@ footer a:hover {
 }
 
 .back {
-    text-align: center;
-    background-color: #333;
-    border-radius: 10px;
+    margin-top: 5rem;
 }
+
 .back a {
-    color: #F44336;
-    text-align: center;
-    background-color: #333;
-    font-weight: 200;
+    color: #0095ff;
+    text-decoration: none;
+    padding: 0 10px;
+    border-radius: 10px;
+    box-shadow: inset 0 0 10px rgba(108, 108, 108, 0.405);
+    font-weight: 500;
+    transition: 200ms;
 }
 
 @media (min-width: 768px) {
     .container {
         width: 50%;
     }
-    footer,
+    footer {
+        width: 50%;
+        margin: 0 auto;
+    }
+
     header {
-        width: 53%;
-        margin: 2rem 22%;
+        width: 55%;
+        margin: 0 auto;
     }
 }
