@@ -1,25 +1,178 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="fa" dir="rtl">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <title>درباره من 😉</title>
-    <link rel="stylesheet" href="./style.css">
-    <link rel="stylesheet" href="./fonts/Vazirmatn-font-face.css">
+    <!-- اضافه کردن لینک فونت Vazirmatn از Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --clr: #00ff9f;
+            --shadow-color: rgba(0, 255, 159, 0.3);
+        }
+
+        body {
+            margin: 0;
+            font-family: 'Vazirmatn', Arial, sans-serif;
+            min-height: 100vh;
+            background: #000;
+            overflow-x: hidden;
+            color: #ddd;
+            text-align: center;
+        }
+
+        .matrix-container {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            animation: animateColor 10s linear infinite;
+        }
+
+        .glass-panel {
+            background: rgba(51, 51, 51, 0.8);
+            backdrop-filter: blur(10px);
+            border-radius: 15px;
+            padding: 20px;
+            margin: 20px auto;
+            box-shadow: inset 0 0 10px 1px rgba(255, 255, 255, 0.185);
+            max-width: 90%;
+        }
+
+        @media (min-width: 768px) {
+            .glass-panel {
+                max-width: 50%;
+            }
+        }
+
+        h1 {
+            color: #fff;
+            margin: 0;
+            padding: 15px;
+            font-weight: bold;  /* اضافه کردن وزن بولد برای h1 */
+        }
+
+        h3 {
+            text-align: right;
+            padding-right: 10px;
+            padding: 10px;
+            background-color: rgba(56, 56, 56, 0.7);
+            margin: 0;
+            color: #FFEB3B;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: 0.3s;
+            font-weight: bold;  /* اضافه کردن وزن بولد برای h3 */
+        }
+
+        h3:hover {
+            background-color: rgba(76, 76, 76, 0.7);
+        }
+
+        h4 {
+            color: #F44336;
+            font-weight: bold;  /* اضافه کردن وزن بولد برای h4 */
+        }
+
+        .skill-category {
+            margin: 1rem 0;
+            padding: 3px;
+            border: 2px solid rgba(224, 224, 224, 0.08);
+            border-radius: 5px;
+        }
+
+        ul {
+            list-style-type: none;
+            padding: 0;
+            margin: 0;
+            display: none;
+        }
+
+        li {
+            padding: 8px;
+            text-align: center;
+            background: rgba(255, 235, 59, 0.9);
+            margin: 5px 2rem;
+            border-radius: 4px;
+            color: #222;
+            font-weight: 700;
+            transition: 0.4s;
+        }
+
+        li:hover {
+            transform: scale(1.05);
+            box-shadow: 0 0 15px rgba(255, 235, 59, 0.5);
+        }
+
+        footer {
+            display: flex;
+            justify-content: space-around;
+            padding: 15px;
+        }
+
+        footer a, .back a {
+            color: #fff;
+            text-decoration: none;
+            padding: 8px 15px;
+            border-radius: 10px;
+            background: rgba(51, 51, 51, 0.8);
+            backdrop-filter: blur(5px);
+            transition: 0.3s;
+        }
+
+        footer a:hover, .back a:hover {
+            background: rgba(71, 71, 71, 0.9);
+            transform: translateY(-2px);
+        }
+
+        .back {
+            margin-top: 3rem;
+            margin-bottom: 2rem;
+        }
+
+        .drop {
+            position: absolute;
+            color: var(--clr);
+            text-shadow: 0 0 10px var(--clr);
+            animation: fall linear forwards;
+            opacity: 0.9;
+        }
+
+        @keyframes fall {
+            0% { transform: translateY(0); opacity: 1; }
+            85% { opacity: 0.9; }
+            100% { transform: translateY(100vh); opacity: 0; }
+        }
+
+        @keyframes animateColor {
+            0% { filter: hue-rotate(0deg); }
+            20% { filter: hue-rotate(72deg); }
+            40% { filter: hue-rotate(144deg); }
+            60% { filter: hue-rotate(216deg); }
+            80% { filter: hue-rotate(288deg); }
+            100% { filter: hue-rotate(360deg); }
+        }
+    </style>
 </head>
 <body>
-    <header>
-        <h1>درباره من</h1>    
-    </header>
-    
-    <div class="container">
+    <div class="matrix-container">
+        <div class="cloud"></div>
+    </div>
+
+    <div class="glass-panel">
+        <h1>درباره من</h1>
+    </div>
+
+    <div class="glass-panel">
         <p>سلام، من مهدی هستم علاقه مند به برنامه نویسی و همینجور فن پیشرفت ازینجا میتونی تواناییامو ببینی و اگه مایل به کارتیمی بودی میتونی باهام در ارتباط باشی</p>
         <h4>توانایی‌هامو در پایین میبینی </h4>
-        <br>
         <div class="skills">
             <div class="skill-category">
-                <h3 onclick="toggleList('pythonList')" style="cursor: pointer;">Python ></h6></h3>
-                <ul id="pythonList" style="display: none;">
+                <h3 onclick="toggleList('pythonList')">Python ></h3>
+                <ul id="pythonList">
                     <li>Machine Learning <sub><em>( Scikit-learn )</em></sub></li>
                     <li>Data Analysis <sub><em>(RegEx - Numpy - Pandas - MatplotLlib)</em></sub></li>
                     <li>Image Processing <sub><em>( openCV )</em></sub></li>
@@ -27,8 +180,8 @@
                 </ul>
             </div>
             <div class="skill-category">
-                <h3 onclick="toggleList('FrontEndList')" style="cursor: pointer;">FrontEnd ></h3>
-                <ul id="FrontEndList" style="display: none;">
+                <h3 onclick="toggleList('FrontEndList')">FrontEnd ></h3>
+                <ul id="FrontEndList">
                     <li>HTML</li>
                     <li>CSS <sub><em>( Talwind - DaisyUI )</em></sub></li>
                     <li>JavaScript - TypeScript</li>
@@ -36,21 +189,64 @@
                 </ul>
             </div>
             <div class="skill-category">
-                <h3 onclick="toggleList('otherSkils')" style="cursor: pointer;">Other Skils ></h3>
-                <ul id="otherSkils" style="display: none;">
+                <h3 onclick="toggleList('otherSkils')">Other Skils ></h3>
+                <ul id="otherSkils">
                     <li>Photoshop</li>
                 </ul>
             </div>
         </div>
     </div>
-    
-    <footer>
-        <a href="mailto:backupmahdi1493@gmail.com">ایمیل</a>
-        <a href="https://github.com/callmemahdi01">گیت هاب</a>
-        <a href="https://www.linkedin.com/in/mahdi-rezaeiii/">لینکدین</a>
-    </footer>
+
+    <div class="glass-panel">
+        <footer>
+            <a href="mailto:backupmahdi1493@gmail.com">ایمیل</a>
+            <a href="https://github.com/callmemahdi01">گیت هاب</a>
+            <a href="https://www.linkedin.com/in/mahdi-rezaeiii/">لینکدین</a>
+        </footer>
+    </div>
 
     <div class="back"><a href="javascript:history.back()">برگشت</a></div>
-    <script src="./script.js"></script>
+
+    <script>
+        const matrixChars = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789@#$%^&*()_+[]{}|;:,.<>?";
+        const cloud = document.querySelector('.cloud');
+        let rainDensity = 30;
+        let rainInterval;
+
+        function randomText() {
+            return matrixChars[Math.floor(Math.random() * matrixChars.length)];
+        }
+
+        function createRainDrop() {
+    const drop = document.createElement('div');
+    drop.classList.add('drop');
+    drop.innerText = randomText();
+    drop.style.left = `${Math.floor(Math.random() * window.innerWidth)}px`;
+    drop.style.fontSize = `${Math.random() * 1.2 + 0.5}em`;
+    // افزایش مدت زمان انیمیشن برای سرعت پایین‌تر
+    drop.style.animationDuration = `${Math.random() * 4 + 4}s`; // اینجا زمان انیمیشن افزایش پیدا کرده است (حدود 3 تا 6 ثانیه)
+
+    cloud.appendChild(drop);
+    drop.addEventListener('animationend', () => cloud.removeChild(drop));
+}
+
+
+        function updateRainDensity(density) {
+            clearInterval(rainInterval);
+            rainDensity = density;
+            rainInterval = setInterval(createRainDrop, rainDensity);
+        }
+
+        function toggleList(id) {
+            const list = document.getElementById(id);
+            if (list.style.display === "none" || !list.style.display) {
+                list.style.display = "block";
+            } else {
+                list.style.display = "none";
+            }
+        }
+
+        updateRainDensity(30);
+    </script>
 </body>
 </html>
