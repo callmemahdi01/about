@@ -1,56 +1,309 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="fa" dir="rtl">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
-    <title>درباره من 😉</title>
-    <link rel="stylesheet" href="./style.css">
-    <link rel="stylesheet" href="./fonts/Vazirmatn-font-face.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>نمونه کار مهدی رضایی</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        body {
+            font-family: 'Vazirmatn', sans-serif;
+            scroll-behavior: smooth;
+        }
+        .rtl {
+            direction: rtl;
+        }
+        .ltr {
+            direction: ltr;
+        }
+        .section-title::after {
+            content: '';
+            display: block;
+            width: 60px;
+            height: 4px;
+            background-color: #10B981; /* Tailwind green-500 */
+            margin: 8px auto 0;
+            border-radius: 2px;
+        }
+        .project-card:hover .project-overlay {
+            opacity: 1;
+        }
+        .skill-badge {
+            transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+        }
+        .skill-badge:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+        }
+        /* Custom scrollbar for better aesthetics */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #1f2937; /* Tailwind gray-800 */
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #374151; /* Tailwind gray-700 */
+            border-radius: 4px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #4b5563; /* Tailwind gray-600 */
+        }
+    </style>
 </head>
-<body>
-    <header>
-        <h1>درباره من</h1>    
-    </header>
-    
-    <div class="container">
-        <p>سلام، من مهدی هستم علاقه مند به برنامه نویسی و همینجور فن پیشرفت ازینجا میتونی تواناییامو ببینی و اگه مایل به کارتیمی بودی میتونی باهام در ارتباط باشی</p>
-        <h4>توانایی‌هامو در پایین میبینی </h4>
-        <br>
-        <div class="skills">
-            <div class="skill-category">
-                <h3 onclick="toggleList('pythonList')" style="cursor: pointer;">Python ></h6></h3>
-                <ul id="pythonList" style="display: none;">
-                    <li>Machine Learning <sub><em>( Scikit-learn )</em></sub></li>
-                    <li>Data Analysis <sub><em>(RegEx - Numpy - Pandas - MatplotLlib)</em></sub></li>
-                    <li>Image Processing <sub><em>( openCV )</em></sub></li>
-                    <li>deep learning</li>
-                </ul>
+<body class="bg-gray-900 text-gray-200 rtl">
+
+    <nav class="bg-gray-800/70 backdrop-blur-md shadow-lg fixed w-full z-50 top-0">
+        <div class="container mx-auto px-6 py-3 flex justify-between items-center">
+            <a href="#" class="text-2xl font-bold text-green-400 hover:text-green-300 transition-colors">مهدی رضایی</a>
+            <div class="hidden md:flex space-x-reverse space-x-4">
+                <a href="#about" class="text-gray-300 hover:text-green-400 transition-colors px-3 py-2 rounded-md">درباره من</a>
+                <a href="#skills" class="text-gray-300 hover:text-green-400 transition-colors px-3 py-2 rounded-md">مهارت‌ها</a>
+                <a href="#projects" class="text-gray-300 hover:text-green-400 transition-colors px-3 py-2 rounded-md">پروژه‌ها</a>
+                <a href="#contact" class="text-gray-300 hover:text-green-400 transition-colors px-3 py-2 rounded-md">تماس</a>
             </div>
-            <div class="skill-category">
-                <h3 onclick="toggleList('FrontEndList')" style="cursor: pointer;">FrontEnd ></h3>
-                <ul id="FrontEndList" style="display: none;">
-                    <li>HTML</li>
-                    <li>CSS <sub><em>( Talwind - DaisyUI )</em></sub></li>
-                    <li>JavaScript - TypeScript</li>
-                    <li>React js</li>
-                </ul>
-            </div>
-            <div class="skill-category">
-                <h3 onclick="toggleList('otherSkils')" style="cursor: pointer;">Other Skils ></h3>
-                <ul id="otherSkils" style="display: none;">
-                    <li>Photoshop</li>
-                </ul>
+            <div class="md:hidden">
+                <button id="mobile-menu-button" class="text-gray-300 focus:outline-none">
+                    <i class="fas fa-bars text-2xl"></i>
+                </button>
             </div>
         </div>
-    </div>
-    
-    <footer>
-        <a href="mailto:backupmahdi1493@gmail.com">ایمیل</a>
-        <a href="https://github.com/callmemahdi01">گیت هاب</a>
-        <a href="https://www.linkedin.com/in/mahdi-rezaeiii/">لینکدین</a>
+        <div id="mobile-menu" class="md:hidden hidden bg-gray-800/90">
+            <a href="#about" class="block text-gray-300 hover:bg-gray-700 hover:text-green-400 transition-colors py-2 px-6">درباره من</a>
+            <a href="#skills" class="block text-gray-300 hover:bg-gray-700 hover:text-green-400 transition-colors py-2 px-6">مهارت‌ها</a>
+            <a href="#projects" class="block text-gray-300 hover:bg-gray-700 hover:text-green-400 transition-colors py-2 px-6">پروژه‌ها</a>
+            <a href="#contact" class="block text-gray-300 hover:bg-gray-700 hover:text-green-400 transition-colors py-2 px-6">تماس</a>
+        </div>
+    </nav>
+
+    <header class="bg-gradient-to-br from-gray-900 via-gray-800 to-gray-900 min-h-screen flex items-center justify-center pt-16">
+        <div class="text-center px-6">
+            <img src="https://placehold.co/150x150/10B981/FFFFFF?text=MR" alt="مهدی رضایی" class="w-36 h-36 md:w-48 md:h-48 mx-auto rounded-full shadow-2xl border-4 border-green-500 object-cover mb-8">
+            <h1 class="text-4xl md:text-6xl font-bold text-white mb-4">سلام، من <span class="text-green-400">مهدی</span> هستم</h1>
+            <p class="text-xl md:text-2xl text-gray-300 mb-8 max-w-2xl mx-auto">یک توسعه‌دهنده علاقه‌مند به برنامه‌نویسی، یادگیری ماشین و پیشرفت مداوم.</p>
+            <div class="flex flex-col sm:flex-row justify-center items-center space-y-4 sm:space-y-0 sm:space-x-reverse sm:space-x-4">
+                <a href="#projects" class="bg-green-500 hover:bg-green-600 text-white font-semibold py-3 px-8 rounded-lg shadow-md transition-transform transform hover:scale-105 text-lg w-full sm:w-auto">مشاهده پروژه‌ها</a>
+                <a href="https://www.linkedin.com/in/mahdi-rezaeiii/" target="_blank" rel="noopener noreferrer" class="bg-blue-600 hover:bg-blue-700 text-white font-semibold py-3 px-8 rounded-lg shadow-md transition-transform transform hover:scale-105 text-lg w-full sm:w-auto flex items-center justify-center">
+                    <i class="fab fa-linkedin mr-2 rtl:ml-2 rtl:mr-0"></i> لینکدین
+                </a>
+            </div>
+        </div>
+    </header>
+
+    <section id="about" class="py-16 md:py-24 bg-gray-800">
+        <div class="container mx-auto px-6">
+            <h2 class="text-3xl md:text-4xl font-bold text-center text-white mb-12 section-title">درباره من</h2>
+            <div class="max-w-3xl mx-auto bg-gray-700/50 p-6 md:p-8 rounded-xl shadow-xl">
+                <p class="text-lg text-gray-300 leading-relaxed mb-4">
+                    من مهدی رضایی هستم، یک برنامه‌نویس با اشتیاق فراوان برای حل مسائل پیچیده و ساخت نرم‌افزارهای کاربردی. از دنیای پویای تکنولوژی و به خصوص حوزه‌هایی مانند یادگیری ماشین و تحلیل داده‌ها لذت می‌برم.
+                </p>
+                <p class="text-lg text-gray-300 leading-relaxed mb-4">
+                    همواره در حال یادگیری و کسب مهارت‌های جدید هستم تا بتوانم در پروژه‌های چالش‌برانگیز مشارکت کنم و به پیشرفت تکنولوژی کمک کنم. معتقدم که کار تیمی و به اشتراک‌گذاری دانش، کلید موفقیت در هر پروژه‌ای است.
+                </p>
+                <p class="text-lg text-gray-300 leading-relaxed">
+                    اگر به دنبال همکاری در پروژه‌های نوآورانه هستید یا سوالی دارید، خوشحال می‌شوم با من در ارتباط باشید.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <section id="skills" class="py-16 md:py-24 bg-gray-900">
+        <div class="container mx-auto px-6">
+            <h2 class="text-3xl md:text-4xl font-bold text-center text-white mb-16 section-title">مهارت‌های من</h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <div class="bg-gray-800 p-6 rounded-xl shadow-xl hover:shadow-2xl transition-shadow">
+                    <div class="flex items-center mb-4">
+                        <i class="fab fa-python text-4xl text-green-400 mr-4 rtl:ml-4 rtl:mr-0"></i>
+                        <h3 class="text-2xl font-semibold text-white">پایتون و یادگیری ماشین</h3>
+                    </div>
+                    <ul class="space-y-2">
+                        <li class="text-gray-300"><span class="text-green-400 ml-2 rtl:mr-2 rtl:ml-0">&#10003;</span>یادگیری ماشین (Scikit-learn)</li>
+                        <li class="text-gray-300"><span class="text-green-400 ml-2 rtl:mr-2 rtl:ml-0">&#10003;</span>تحلیل داده (Numpy, Pandas, Matplotlib)</li>
+                        <li class="text-gray-300"><span class="text-green-400 ml-2 rtl:mr-2 rtl:ml-0">&#10003;</span>پردازش تصویر (OpenCV)</li>
+                        <li class="text-gray-300"><span class="text-green-400 ml-2 rtl:mr-2 rtl:ml-0">&#10003;</span>یادگیری عمیق (مقدماتی)</li>
+                         <li class="text-gray-300"><span class="text-green-400 ml-2 rtl:mr-2 rtl:ml-0">&#10003;</span>عبارات منظم (RegEx)</li>
+                    </ul>
+                </div>
+
+                <div class="bg-gray-800 p-6 rounded-xl shadow-xl hover:shadow-2xl transition-shadow">
+                    <div class="flex items-center mb-4">
+                        <i class="fas fa-code text-4xl text-blue-400 mr-4 rtl:ml-4 rtl:mr-0"></i>
+                        <h3 class="text-2xl font-semibold text-white">توسعه وب (Frontend)</h3>
+                    </div>
+                    <ul class="space-y-2">
+                        <li class="text-gray-300"><span class="text-blue-400 ml-2 rtl:mr-2 rtl:ml-0">&#10003;</span>HTML5</li>
+                        <li class="text-gray-300"><span class="text-blue-400 ml-2 rtl:mr-2 rtl:ml-0">&#10003;</span>CSS3 (Tailwind CSS, DaisyUI)</li>
+                        <li class="text-gray-300"><span class="text-blue-400 ml-2 rtl:mr-2 rtl:ml-0">&#10003;</span>JavaScript (ES6+) / TypeScript</li>
+                        <li class="text-gray-300"><span class="text-blue-400 ml-2 rtl:mr-2 rtl:ml-0">&#10003;</span>React.js</li>
+                    </ul>
+                </div>
+
+                <div class="bg-gray-800 p-6 rounded-xl shadow-xl hover:shadow-2xl transition-shadow">
+                    <div class="flex items-center mb-4">
+                        <i class="fas fa-tools text-4xl text-yellow-400 mr-4 rtl:ml-4 rtl:mr-0"></i>
+                        <h3 class="text-2xl font-semibold text-white">سایر مهارت‌ها</h3>
+                    </div>
+                    <ul class="space-y-2">
+                        <li class="text-gray-300"><span class="text-yellow-400 ml-2 rtl:mr-2 rtl:ml-0">&#10003;</span>فتوشاپ (طراحی گرافیک)</li>
+                        <li class="text-gray-300"><span class="text-yellow-400 ml-2 rtl:mr-2 rtl:ml-0">&#10003;</span>Git و GitHub (کنترل نسخه)</li>
+                        <li class="text-gray-300"><span class="text-yellow-400 ml-2 rtl:mr-2 rtl:ml-0">&#10003;</span>مفاهیم پایگاه داده (SQL مقدماتی)</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="projects" class="py-16 md:py-24 bg-gray-800">
+        <div class="container mx-auto px-6">
+            <h2 class="text-3xl md:text-4xl font-bold text-center text-white mb-16 section-title">پروژه‌های من</h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <div class="bg-gray-700 rounded-xl shadow-xl overflow-hidden project-card transform hover:scale-105 transition-transform duration-300">
+                    <img src="https://placehold.co/600x400/1F2937/E5E7EB?text=مدیریت+مالی" alt="پروژه مدیریت مالی" class="w-full h-56 object-cover">
+                    <div class="p-6 relative">
+                        <h3 class="text-2xl font-semibold text-white mb-2">مدیریت مالی</h3>
+                        <p class="text-gray-300 mb-4 text-sm">یک اپلیکیشن برای کمک به مدیریت امور مالی شخصی یا کسب و کارهای کوچک، با امکانات ثبت درآمد و هزینه.</p>
+                        <div class="project-overlay absolute inset-0 bg-gray-900/80 flex items-center justify-center opacity-0 transition-opacity duration-300">
+                            <a href="#" target="_blank" class="text-green-400 hover:text-green-300 border border-green-400 hover:border-green-300 rounded-lg px-4 py-2 mx-2 transition-colors"><i class="fas fa-link mr-1 rtl:ml-1 rtl:mr-0"></i> مشاهده آنلاین</a>
+                            <a href="https://github.com/callmemahdi01/financial-management" target="_blank" rel="noopener noreferrer" class="text-gray-300 hover:text-white border border-gray-400 hover:border-white rounded-lg px-4 py-2 mx-2 transition-colors"><i class="fab fa-github mr-1 rtl:ml-1 rtl:mr-0"></i> سورس کد</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="bg-gray-700 rounded-xl shadow-xl overflow-hidden project-card transform hover:scale-105 transition-transform duration-300">
+                    <img src="https://placehold.co/600x400/111827/D1D5DB?text=لیست+وظایف" alt="پروژه لیست وظایف" class="w-full h-56 object-cover">
+                    <div class="p-6 relative">
+                        <h3 class="text-2xl font-semibold text-white mb-2">لیست وظایف</h3>
+                        <p class="text-gray-300 mb-4 text-sm">یک برنامه ساده و کاربردی برای مدیریت وظایف روزانه با امکانات افزودن، ویرایش، تکمیل و حذف وظایف.</p>
+                         <div class="project-overlay absolute inset-0 bg-gray-900/80 flex items-center justify-center opacity-0 transition-opacity duration-300">
+                            <a href="#" target="_blank" class="text-green-400 hover:text-green-300 border border-green-400 hover:border-green-300 rounded-lg px-4 py-2 mx-2 transition-colors"><i class="fas fa-link mr-1 rtl:ml-1 rtl:mr-0"></i> مشاهده آنلاین</a>
+                            <a href="https://github.com/callmemahdi01/To-Do-List" target="_blank" rel="noopener noreferrer" class="text-gray-300 hover:text-white border border-gray-400 hover:border-white rounded-lg px-4 py-2 mx-2 transition-colors"><i class="fab fa-github mr-1 rtl:ml-1 rtl:mr-0"></i> سورس کد</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="bg-gray-700 rounded-xl shadow-xl overflow-hidden project-card transform hover:scale-105 transition-transform duration-300">
+                    <img src="https://placehold.co/600x400/374151/9CA3AF?text=بینایی+ماشین" alt="پروژه بینایی ماشین" class="w-full h-56 object-cover">
+                     <div class="p-6 relative">
+                        <h3 class="text-2xl font-semibold text-white mb-2">پروژه بینایی ماشین</h3>
+                        <p class="text-gray-300 mb-4 text-sm">پروژه‌ای در حوزه پردازش تصویر و بینایی کامپیوتر، احتمالاً با استفاده از کتابخانه‌هایی مانند OpenCV و تکنیک‌های یادگیری ماشین.</p>
+                         <div class="project-overlay absolute inset-0 bg-gray-900/80 flex items-center justify-center opacity-0 transition-opacity duration-300">
+                            <a href="#" target="_blank" class="text-green-400 hover:text-green-300 border border-green-400 hover:border-green-300 rounded-lg px-4 py-2 mx-2 transition-colors"><i class="fas fa-link mr-1 rtl:ml-1 rtl:mr-0"></i> مشاهده آنلاین</a>
+                            <a href="https://github.com/callmemahdi01/vision" target="_blank" rel="noopener noreferrer" class="text-gray-300 hover:text-white border border-gray-400 hover:border-white rounded-lg px-4 py-2 mx-2 transition-colors"><i class="fab fa-github mr-1 rtl:ml-1 rtl:mr-0"></i> سورس کد</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="bg-gray-700 rounded-xl shadow-xl overflow-hidden project-card transform hover:scale-105 transition-transform duration-300">
+                    <img src="https://placehold.co/600x400/1F2937/E5E7EB?text=تحلیل+اپیدمی" alt="پروژه تحلیل داده اپیدمی" class="w-full h-56 object-cover">
+                    <div class="p-6 relative">
+                        <h3 class="text-2xl font-semibold text-white mb-2">تحلیل داده اپیدمی</h3>
+                        <p class="text-gray-300 mb-4 text-sm">پروژه‌ای مرتبط با تحلیل و بصری‌سازی داده‌های مربوط به شیوع بیماری‌ها یا مسائل اپیدمیولوژیک.</p>
+                        <div class="project-overlay absolute inset-0 bg-gray-900/80 flex items-center justify-center opacity-0 transition-opacity duration-300">
+                            <a href="#" target="_blank" class="text-green-400 hover:text-green-300 border border-green-400 hover:border-green-300 rounded-lg px-4 py-2 mx-2 transition-colors"><i class="fas fa-link mr-1 rtl:ml-1 rtl:mr-0"></i> مشاهده آنلاین</a>
+                            <a href="https://github.com/callmemahdi01/epid" target="_blank" rel="noopener noreferrer" class="text-gray-300 hover:text-white border border-gray-400 hover:border-white rounded-lg px-4 py-2 mx-2 transition-colors"><i class="fab fa-github mr-1 rtl:ml-1 rtl:mr-0"></i> سورس کد</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="bg-gray-700 rounded-xl shadow-xl overflow-hidden project-card transform hover:scale-105 transition-transform duration-300">
+                    <img src="https://placehold.co/600x400/111827/D1D5DB?text=تست+سرعت" alt="پروژه تست سرعت اینترنت" class="w-full h-56 object-cover">
+                    <div class="p-6 relative">
+                        <h3 class="text-2xl font-semibold text-white mb-2">تست سرعت اینترنت</h3>
+                        <p class="text-gray-300 mb-4 text-sm">ابزاری برای اندازه‌گیری سرعت دانلود و آپلود اتصال اینترنت کاربر، احتمالاً با استفاده از APIهای موجود.</p>
+                         <div class="project-overlay absolute inset-0 bg-gray-900/80 flex items-center justify-center opacity-0 transition-opacity duration-300">
+                            <a href="#" target="_blank" class="text-green-400 hover:text-green-300 border border-green-400 hover:border-green-300 rounded-lg px-4 py-2 mx-2 transition-colors"><i class="fas fa-link mr-1 rtl:ml-1 rtl:mr-0"></i> مشاهده آنلاین</a>
+                            <a href="https://github.com/callmemahdi01/speedtest" target="_blank" rel="noopener noreferrer" class="text-gray-300 hover:text-white border border-gray-400 hover:border-white rounded-lg px-4 py-2 mx-2 transition-colors"><i class="fab fa-github mr-1 rtl:ml-1 rtl:mr-0"></i> سورس کد</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="bg-gray-700 rounded-xl shadow-xl overflow-hidden project-card transform hover:scale-105 transition-transform duration-300">
+                    <img src="https://placehold.co/600x400/374151/9CA3AF?text=ایمونولوژی" alt="پروژه ایمونولوژی بالینی" class="w-full h-56 object-cover">
+                     <div class="p-6 relative">
+                        <h3 class="text-2xl font-semibold text-white mb-2">ایمونولوژی بالینی</h3>
+                        <p class="text-gray-300 mb-4 text-sm">یک پروژه نرم‌افزاری تخصصی در حوزه ایمونولوژی بالینی، که ممکن است شامل پایگاه داده، ابزار تحلیلی یا محتوای آموزشی باشد.</p>
+                         <div class="project-overlay absolute inset-0 bg-gray-900/80 flex items-center justify-center opacity-0 transition-opacity duration-300">
+                            <a href="#" target="_blank" class="text-green-400 hover:text-green-300 border border-green-400 hover:border-green-300 rounded-lg px-4 py-2 mx-2 transition-colors"><i class="fas fa-link mr-1 rtl:ml-1 rtl:mr-0"></i> مشاهده آنلاین</a>
+                            <a href="https://github.com/callmemahdi01/clinical-immunology" target="_blank" rel="noopener noreferrer" class="text-gray-300 hover:text-white border border-gray-400 hover:border-white rounded-lg px-4 py-2 mx-2 transition-colors"><i class="fab fa-github mr-1 rtl:ml-1 rtl:mr-0"></i> سورس کد</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="contact" class="py-16 md:py-24 bg-gray-900">
+        <div class="container mx-auto px-6">
+            <h2 class="text-3xl md:text-4xl font-bold text-center text-white mb-12 section-title">ارتباط با من</h2>
+            <div class="max-w-lg mx-auto text-center">
+                <p class="text-lg text-gray-300 mb-8">
+                    علاقه‌مند به همکاری یا گفت‌وگو هستید؟ از طریق راه‌های زیر با من در تماس باشید.
+                </p>
+                <div class="flex justify-center space-x-reverse space-x-6">
+                    <a href="mailto:backupmahdi1493@gmail.com" class="text-gray-400 hover:text-green-400 transition-colors text-3xl md:text-4xl" title="ایمیل">
+                        <i class="fas fa-envelope"></i>
+                    </a>
+                    <a href="https://github.com/callmemahdi01" target="_blank" rel="noopener noreferrer" class="text-gray-400 hover:text-green-400 transition-colors text-3xl md:text-4xl" title="گیت‌هاب">
+                        <i class="fab fa-github"></i>
+                    </a>
+                    <a href="https://www.linkedin.com/in/mahdi-rezaeiii/" target="_blank" rel="noopener noreferrer" class="text-gray-400 hover:text-green-400 transition-colors text-3xl md:text-4xl" title="لینکدین">
+                        <i class="fab fa-linkedin"></i>
+                    </a>
+                    <!-- <a href="https://t.me/yourusername" target="_blank" rel="noopener noreferrer" class="text-gray-400 hover:text-green-400 transition-colors text-3xl md:text-4xl" title="تلگرام">
+                        <i class="fab fa-telegram-plane"></i>
+                    </a> -->
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer class="bg-gray-800 py-8 text-center">
+        <div class="container mx-auto px-6">
+            <p class="text-gray-400">
+                &copy; <span class="ltr">2024</span> مهدی رضایی. تمامی حقوق محفوظ است.
+            </p>
+            <p class="text-sm text-gray-500 mt-2">
+                ساخته شده با <i class="fas fa-heart text-red-500"></i> و <a href="https://tailwindcss.com/" target="_blank" rel="noopener noreferrer" class="hover:text-green-400">Tailwind CSS</a>
+            </p>
+        </div>
     </footer>
 
-    <div class="back"><a href="javascript:history.back()">برگشت</a></div>
-    <script src="./script.js"></script>
+    <script>
+        // Mobile menu toggle
+        const mobileMenuButton = document.getElementById('mobile-menu-button');
+        const mobileMenu = document.getElementById('mobile-menu');
+        const navLinks = mobileMenu.querySelectorAll('a');
+
+        mobileMenuButton.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+            // Toggle icon
+            const icon = mobileMenuButton.querySelector('i');
+            if (mobileMenu.classList.contains('hidden')) {
+                icon.classList.remove('fa-times');
+                icon.classList.add('fa-bars');
+            } else {
+                icon.classList.remove('fa-bars');
+                icon.classList.add('fa-times');
+            }
+        });
+
+        // Close mobile menu when a link is clicked
+        navLinks.forEach(link => {
+            link.addEventListener('click', () => {
+                mobileMenu.classList.add('hidden');
+                mobileMenuButton.querySelector('i').classList.remove('fa-times');
+                mobileMenuButton.querySelector('i').classList.add('fa-bars');
+            });
+        });
+
+        // Smooth scroll for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                if (this.getAttribute('href').length > 1 && document.querySelector(this.getAttribute('href'))) {
+                    e.preventDefault();
+                    document.querySelector(this.getAttribute('href')).scrollIntoView({
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+    </script>
 </body>
 </html>
